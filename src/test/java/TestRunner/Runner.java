@@ -7,11 +7,13 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-				features = {"src/test/resources/AppFeatures/accountPage.feature"},
-				glue = {"StepDefinition","AppHooks"},
+				features = {"src/test/resources/AppFeatures/loginPage.feature"},//path of feature file
+				glue = {"StepDefinition","AppHooks"},//To execute pre defined steps
 				plugin = {"pretty",
 						"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
-				}
+				},//Reporting
+				monochrome=true,//Clear console output
+				tags = "@smokeTest"//Differentiate test suit
 				)
 
 public class Runner {

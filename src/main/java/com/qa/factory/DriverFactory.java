@@ -14,6 +14,7 @@ public class DriverFactory {
 	 */
 	public static ThreadLocal<WebDriver> tldriver = new ThreadLocal<>();
 	
+	
 	public WebDriver init_driver(String browser) {
 		if(browser.equals("chrome")){
 			tldriver.set(new ChromeDriver());
@@ -31,5 +32,6 @@ public class DriverFactory {
 	 */
 	public static WebDriver getDriver() {
 		return tldriver.get();
+		
 	}
 }

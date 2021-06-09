@@ -17,6 +17,7 @@ public class AccountPageSteps {
 	
 	private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
 	private AccountPage accountpage;
+	
 	@Given("user has already logged in to application")
 	public void user_has_already_logged_in_to_application(DataTable credTable) {
 		
@@ -25,7 +26,8 @@ public class AccountPageSteps {
 	    String password = credList.get(0).get("password");
 	    
 	    DriverFactory.getDriver().get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-	    accountpage = loginPage.doLogin(userName, password);
+	    //accountpage = loginPage.doLogin(userName, password);
+	    loginPage.doLogin(userName, password);
 	}
 
 	@Given("user is on account page")
@@ -37,7 +39,6 @@ public class AccountPageSteps {
 	@Then("user gets account section")
 	public void user_gets_account_section(DataTable sectionTable) {
 		List<String> expectedList = sectionTable.asList();
-		
 		List<String> actualList = accountpage.getAccountSectionList();
 		Assert.assertTrue(expectedList.containsAll(actualList));
 	}
